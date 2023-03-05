@@ -15,7 +15,6 @@
 </head>
 
 <body>
-    <div class="control"><button id="tryIt" disabled>Try it</button></div>
     <p class="err" id="errorMessage"></p>
     </div>
     <div>
@@ -52,11 +51,6 @@
                 cv.imshow('canvasOutput', dst);
                 src.delete(); dst.delete();
             }, 100)
-        });
-
-        let tryIt = document.getElementById('tryIt');
-        utils.loadOpenCv(() => {
-            tryIt.removeAttribute('disabled');
         });
     </script>
 </body>
