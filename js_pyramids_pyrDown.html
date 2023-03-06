@@ -38,6 +38,7 @@
             </tr>
         </table>
     </div>
+    <script src="opencv.js" type="text/javascript"></script>
     <script src="utils.js" type="text/javascript"></script>
     <script type="text/javascript">
         let utils = new Utils('errorMessage');
@@ -45,11 +46,22 @@
         utils.addFileInputHandler('fileInput', 'canvasInput', () => {
             setTimeout(() => {
                 let src = cv.imread('canvasInput');
-                console.log(src, 'src')
                 let dst = new cv.Mat();
-                cv.pyrDown(src, dst, new cv.Size(0, 0), cv.BORDER_DEFAULT);
+                const dsize = new cv.Size(0, 0)
+                console.log('Size: ', dsize)
+               // cv.pyrDown(src, dst, dsize, cv.BORDER_DEFAULT);10
+                cv.pyrDown(src, dst, dsize, cv.BORDER_DEFAULT);
                 cv.imshow('canvasOutput', dst);
-                src.delete(); dst.delete();
+                setTimeout(() => {
+                    debugger
+                    let src2 = cv.imread('canvasOutput');
+                    let dst2 = new cv.Mat();
+                    const dsize2 = new cv.Size(0, 0)
+                    cv.pyrDown(src2, dst2, dsize2, cv.BORDER_DEFAULT);
+                    cv.imshow('canvasOutput', dst2);
+                    src.delete(); dst.delete();
+                    src2.delete(); dst2.delete();
+                }, 100)
             }, 100)
         });
     </script>
