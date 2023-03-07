@@ -106,6 +106,7 @@ function Utils(errorOutputId) { // eslint-disable-line no-unused-vars
         let inputElement = document.getElementById(fileInputId);
         inputElement.addEventListener('change', (e) => {
             let files = e.target.files;
+            console.log(files, URL.createObjectURL(files[0]), 'origin')
             if (files.length > 0) {
                 let imgUrl = URL.createObjectURL(files[0]);
                 console.log(URL, 'imgUrl')
